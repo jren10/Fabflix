@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Checkout</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"></head>
+</head>
+<body>
+
+<h1 ALIGN="CENTER">Enter Payment Information</h1>
+			<form id="checkout_form" method="POST" action="#">
+    			First Name:    <input TYPE="TEXT" name="first_name"><br>
+    			Last Name:     <input TYPE="TEXT" name="last_name"><br>
+    			Credit Card Number: <input TYPE="TEXT" name="credit_card"><br>
+				Expiration Date (Format yyyy-mm-dd):     <input TYPE="TEXT" name="expiration"><br> 
+    			<input id="Search" TYPE="SUBMIT" VALUE="Confirm">
+			</form>
+<div id="checkout_error_message"></div>
+			
+</body>
+
+
+<!-- include jQuery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- include our own JS file -->
+<script src="./checkout.js"></script>
+
+<footer>
+	<p><a href="/project4/index.html">Home</a></p>
+	<p><a href="/project4/cart.html">Shopping Cart</a></p>
+	<p></p>
+	<button onclick="goBack()">Back</button>
+</footer>
+
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+</html>

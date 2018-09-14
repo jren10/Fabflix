@@ -1,0 +1,23 @@
+First method of checking for duplicates/inserting movies:
+
+We ran a SQL query returning all movies with the same movie_id as the one we were looking to insert. If the query returned
+an empty table, we would proceed with inserting the movie.
+
+runtime: ~180 seconds (3 minutes)
+
+Second method of checking for duplicates/inserting movies:
+
+We copied the movie table to memory in the form of a map. After checking to see if the new movie id was in the map, we
+would insert it into the table if it wasn't there and then update the map.
+
+runtime: ~73 seconds (1.2 minutes)
+
+Third method of checking for duplicates/inserting movies:
+
+We copied the movie table into a map, checked against the map to see if the new movie was already stored, and then on a hit,
+we wrote the new data to file.
+
+At the end of checking all of the new movies, we inserted all of the info into the database with one SQL call, using
+the data from the file.
+
+runtime: ~.5 seconds (.008 minutes)

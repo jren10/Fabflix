@@ -1,0 +1,7 @@
+like-predicate.txt
+
+In MovieListServlet.java I run a query based on the search parameters passed in by SearchServlet.java and its corresponding js and html file.
+For the standard search parameters of movie title, movie director, movie year, and star name I use LIKE '%parameter%', with the parameter
+being the passed in information from the search form. When doing browse by genre I match up the browse attribute and hyperlink it from the browseGenre.html.
+Same logic applies to my browseTitle.html, with a new parameter called first_char that is passsed in and matched with LIKE 'char&' for the first character
+to match up.

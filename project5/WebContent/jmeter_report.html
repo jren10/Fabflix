@@ -1,0 +1,114 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    background-color: linen;
+}
+
+td {
+    border-top-style: solid;
+}
+</style>
+</head>
+<body>
+
+<table style="width:100%">
+  <tr style="font-weight:bold; background-color: orange">
+    <td width="300px">Single-instance version cases</td>
+    <td>Graph Results Screenshot</td>
+    <td>Average Query Time(ms)</td>
+    <td>Average Search Servlet Time(ms)</td>
+    <td>Average JDBC Time(ms)</td>
+    <td>Analysis</td>
+  </tr>
+  <tr>
+    <td>Case 1: HTTP/1 thread</td>
+    <td><img src="8080_1_standard.png" alt="Graph Results Screenshot Case 1" style="width:304px;height:228px;"></td>
+    <td>90</td>
+    <td>7.398103797501893</td>
+    <td>7.398103797501893</td>
+    <td>The throughput was 660.332/minute. The average query time was however lower than the 10 threads. </td>
+  </tr>
+  <tr>
+    <td>Case 2: HTTP/10 threads</td>
+    <td><img src="8080_10_standard.png" alt="Graph Results Screenshot Case 2" style="width:304px;height:228px;"></td>
+    <td>108</td>
+    <td>13.531838705904619</td>
+    <td>13.531838705904619</td>
+    <td>The throughput was 6,291.47/minute. This was about 10 times more than 1 thread, which is proportional. Additionally, the average times for the queries increased. </td>
+  </tr>
+  <tr>
+    <td>Case 3: HTTPS/10 threads</td>
+    <td><img src="8443_10_standard.png" alt="Graph Results Screenshot Case 3" style="width:304px;height:228px;"></td>
+    <td>115</td>
+    <td>14.123946737320212</td>
+    <td>14.123946737320212</td>
+    <td>The throughput was 5,113.383/minute. Every measure was slower than the HTTP 10 thread trial, as expected because the secure connection in general is slower for additional security checking. </td>
+  </tr>
+  <tr>
+    <td>Case 4: HTTP/10 threads/No prepared statements</td>
+    <td><img src="8080_10_nops.png" alt="Graph Results Screenshot Case 4" style="width:304px;height:228px;"></td>
+    <td>92</td>
+    <td>7.0539358001514</td>
+    <td>7.0539358001514</td>
+    <td>The throughput was 6,316.796/minute. This was quicker than the original HTTP/10 thread trial as without prepared statements there is only one query being executed/run instead of multiple updates. However, this is much less secure than using prepared statements.</td>
+  </tr>
+  <tr>
+    <td>Case 5: HTTP/10 threads/No connection pooling</td>
+    <td><img src="8080_10_nopool.png" alt="Graph Results Screenshot Case 4" style="width:304px;height:228px;"></td>
+    <td>93</td>
+    <td>6.745894900795153</td>
+    <td>6.745894900795153</td>
+    <td>The throughput was 6,291.475/minute, almost the same as the original HTTP/10 thread trial. The query times however were about the same, if anything a little quicker.</td>
+  </tr>
+
+</table> 
+
+
+<table style="width:100%">
+  <tr style="font-weight:bold; background-color: orange">
+    <td width="300px">Scaled version cases</td>
+    <td>Graph Results Screenshot</td>
+    <td>Average Query Time(ms)</td>
+    <td>Average Search Servlet Time(ms)</td>
+    <td>Average JDBC Time(ms)</td>
+    <td>Analysis</td>
+  </tr>
+  <tr>
+    <td>Case 1: HTTP/1 thread</td>
+    <td><img src="80_1_standard.png" alt="Graph Results Screenshot Case 1" style="width:304px;height:228px;"></td>
+    <td>93</td>
+    <td>7.60966435011355</td>
+    <td>7.60966435011355</td>
+    <td>The throughput was 651.193/minute. These measures are comparative to the port 8080 trial of HTTP/1 thread, just a tad slower. </td>
+  </tr>
+  <tr>
+    <td>Case 2: HTTP/10 threads</td>
+    <td><img src="80_10_standard.png" alt="Graph Results Screenshot Case 2" style="width:304px;height:228px;"></td>
+    <td>111</td>
+    <td>19.608223119227855</td>
+    <td>19.608223119227855</td>
+    <td>The throughput was 5,291.291/minute. This was suprisingly much slower than I expected. </td>
+  </tr>
+  <tr>
+    <td>Case 3: HTTP/10 threads/No prepared statements</td>
+    <td><img src="80_10_nops.png" alt="Graph Results Screenshot Case 4" style="width:304px;height:228px;"></td>
+    <td>106</td>
+    <td>10.285880684051397</td>
+    <td>10.285880684051397</td>
+    <td>The throughput was 5,528.18/minute. This was quicker than the HTTP/10 thread and the search/JDBC times improved dramatically. </td>
+  </tr>
+  <tr>
+    <td>Case 4: HTTP/10 threads/No connection pooling</td>
+    <td><img src="80_10_nopool.png" alt="Graph Results Screenshot Case 4" style="width:304px;height:228px;"></td>
+    <td>93</td>
+    <td>6.1610139386595995</td>
+    <td>6.1610139386595995</td>
+    <td>The throughput was 6,310.258/minute. This was quicker than any of the other port 80 (scaled) tests. </td>
+  </tr>
+
+</table> 
+
+</body>
+</html>

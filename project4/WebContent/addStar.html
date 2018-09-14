@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Add Star</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"></head>
+</head>
+<body>
+
+<h1 ALIGN="CENTER">Add Star</h1>
+			<form id="add_star" method="GET" action="#">
+				Star:     <input TYPE="TEXT" name="star"><br> 
+    			Birth Year:   <input TYPE="TEXT" name="birthYear"><br>				
+    			<input id="add_star" TYPE="SUBMIT" VALUE="Add Star">
+			</form>
+			
+<div id="add_error_message"></div>
+			
+</body>
+
+
+<!-- include jQuery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- include our own JS file -->
+<script src="./addStar.js"></script>
+
+<footer>
+	<button onclick="goBack()">Back</button>
+</footer>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+</html>
